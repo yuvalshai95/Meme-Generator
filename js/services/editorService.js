@@ -16,6 +16,15 @@ function _initMeme() {
         position: { x: 50, y: 100 },
         isDrag: false,
       },
+      {
+        txt: '',
+        fontSize: 40,
+        align: null,
+        color: null,
+        outline: null,
+        position: { x: 50, y: 400 },
+        isDrag: false,
+      },
     ],
     isDrag: false,
   };
@@ -29,9 +38,8 @@ function setMemeImgId(imgId) {
   gMeme.selectedImgId = imgId;
 }
 
-//TODO: not only first line
 function setLineTxt(txt) {
-  gMeme.lines[0].txt = txt;
+  gMeme.lines[gMeme.selectedLineIdx].txt = txt;
 }
 
 function changeSize(num) {
@@ -47,4 +55,8 @@ function setFillColor(color) {
 
 function setOutlineColor(color) {
   gMeme.lines[gMeme.selectedLineIdx].outline = color;
+}
+
+function switchLines() {
+  gMeme.selectedLineIdx = gMeme.selectedLineIdx === 0 ? 1 : 0;
 }

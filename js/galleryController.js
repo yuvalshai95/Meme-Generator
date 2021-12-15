@@ -65,4 +65,7 @@ function addListeners() {
   elOutlineColorInput.addEventListener('input', function () {
     onChangeOutlineColor(this.value);
   });
+
+  const switchLines = document.querySelector('.switch-lines');
+  switchLines.addEventListener('click', onSwitchLines);
 }

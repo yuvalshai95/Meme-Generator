@@ -62,3 +62,8 @@ function onChangeOutlineColor(color) {
   setOutlineColor(color);
   renderMeme();
 }
+
+function onSwitchLines() {
+  switchLines();
+  renderMeme();
+}
