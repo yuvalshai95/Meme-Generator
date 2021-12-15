@@ -16,7 +16,7 @@ function renderGallery() {
   const imgs = getImgs();
   let strHTML = '';
   imgs.forEach(img => {
-    strHTML += `<img src="${img.url}" data-id=${img.id} alt="">`;
+    strHTML += `<img src="./${img.url}" data-id=${img.id} alt="">`;
   });
   document.querySelector('.meme-gallery-container').innerHTML = strHTML;
 }
