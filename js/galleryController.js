@@ -4,7 +4,8 @@ addBodyListener();
 
 function onInit() {
   renderGallery();
-  addListeners();
+  addGalleryListeners();
+  addEditorListeners();
 
   //TODO: Move this code
   gCanvas = document.querySelector('#canvas');
@@ -30,7 +31,7 @@ function addBodyListener() {
 }
 
 // Listeners
-function addListeners() {
+function addGalleryListeners() {
   // Gallery Images
   const elImgs = document.querySelectorAll('.meme-gallery-container img');
   for (let img of elImgs) {
@@ -39,33 +40,4 @@ function addListeners() {
       onImgSelect(imgId);
     });
   }
-
-  // Editor
-  const elMemeText = document.querySelector('.control-txt');
-  elMemeText.addEventListener('input', function () {
-    onChangeText(this.value);
-  });
-
-  const elIncreaseFontBtn = document.querySelector('.increase-font');
-  elIncreaseFontBtn.addEventListener('click', () => {
-    onChangeFontSize(1);
-  });
-
-  const elDecreaseFont = document.querySelector('.decrease-font');
-  elDecreaseFont.addEventListener('click', () => {
-    onChangeFontSize(-1);
-  });
-
-  const elFillColorInput = document.querySelector('input[name=fillColor]');
-  elFillColorInput.addEventListener('input', function () {
-    onChangeFillColor(this.value);
-  });
-
-  const elOutlineColorInput = document.querySelector('input[name=outlineColor]');
-  elOutlineColorInput.addEventListener('input', function () {
-    onChangeOutlineColor(this.value);
-  });
-
-  const switchLines = document.querySelector('.switch-lines');
-  switchLines.addEventListener('click', onSwitchLines);
 }

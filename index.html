@@ -9,24 +9,32 @@
     <link rel="stylesheet" href="./styles/editor.css">
 </head>
 <body>
-    <header class="main-header">
-        <nav class="main-nav">
+    <header class="main-header main-layout">
+        <nav class="main-nav flex  space-between align-center">
             <img src="./img/LOGO.png" alt="" class="logo">
-            <ul>
-                <li>Gallery</li>
+            <ul class="clean-list flex align-center" >
+                <li class="active">Gallery</li>
+                <span>|</span>
                 <li>About</li>
             </ul>
         </nav>
     </header>
 
-    <section class="search-container">
+    <section class="search-container main-layout flex space-between">
         <input type="text" name="search-txt" placeholder="Search for memes">
+        <ul class="most-common clean-list flex ">
+            <li>all</li>
+            <li>funny</li>
+            <li>kids</li>
+            <li>animals</li>
+            <li> victory</li>
+        </ul>
     </section>
 
-    <section class="meme-gallery-container"></section>
+    <section class="meme-gallery-container main-layout"></section>
   
 
-        <section class="canvas-container">
+        <section class="canvas-container" style="display: none;">
             <canvas id="canvas" height="500px" width="500px"></canvas>
             <div class="meme-control">
                 <input type="text" class="control-txt" placeholder="Meme text here">
@@ -45,8 +53,18 @@
             
         </section>
 
-        <section class="about-container"></section>
-        <footer class="footer-container"></footer>
+        <section class="about-container main-layout flex align-center">
+            <img src="./img/yuval.jpg" alt="">
+            <div class="about-content">'
+                <h3>Yuval Shai</h3>
+                <p>Lorem ipsum dolor sit amet consectetur  officia rerum explicabo. Dolorum.</p>
+                <div class="socials"></div>
+            </div>
+        </section>
+        <footer class="footer-container main-layout flex justify-center align-center">
+            <img src="./img/LOGO.png" alt="" class="logo">
+            <small>&#169; Yuval Shai</small>
+        </footer>
 
 
 
