@@ -1,0 +1,17 @@
+/* Meme Canvas */
+
+/* Meme Control */
+
+.control-btn {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+.control-btn:hover {
+  cursor: pointer;
+}
+
+.control-btn img {
+  width: 50%;
+}

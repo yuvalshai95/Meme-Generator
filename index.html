@@ -5,11 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/gallery.css">
+    <link rel="stylesheet" href="./styles/editor.css">
 </head>
 <body>
-    <h1>Meme Project</h1>
+    <header class="main-header">
+        <nav class="main-nav">
+            <img src="./img/LOGO.png" alt="" class="logo">
+            <ul>
+                <li>Gallery</li>
+                <li>About</li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="search-container">
+        <input type="text" name="search-txt" placeholder="Search for memes">
+    </section>
+
+    <section class="meme-gallery-container"></section>
+  
+
+        <section class="canvas-container">
+            <canvas id="canvas" height="500px" width="500px"></canvas>
+            <div class="meme-control">
+                <input type="text" class="control-txt" placeholder="Meme text here">
+                <button class="control-btn increase-font"><img src="./img/ICONS/increase font - icon.png" alt=""></button>
+                <button class="control-btn decrease-font"><img src="./img/ICONS/decrease font - icon.png" alt=""></button>
+            </div>
+            
+        </section>
+
+        <section class="about-container"></section>
+        <footer class="footer-container"></footer>
+
+
+
+
+
+
+    <script src="./js/services/editorService.js"></script>
     <script src="./js/services/galleryService.js"></script>
+    <script src="./js/editorController.js"></script>
     <script src="./js/galleryController.js"></script>
 </body>
 </html>

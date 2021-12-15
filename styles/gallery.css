@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+/* BASIC */
+
+body {
+  margin: 0;
+}
+
+.logo {
+  width: 133px;
+}
+
+/* LAYOUT */
+
+/* NAV */
+
+/* Gallery */
+.meme-gallery-container img {
+  width: 100px;
+}
+.meme-gallery-container img:hover {
+  cursor: pointer;
+}
+
+/* Canvas */
+#canvas {
+  border: 5px solid black;
+}
+/* About */
+
+/* Footer */
