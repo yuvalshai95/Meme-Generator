@@ -9,7 +9,6 @@ function onInit() {
   //TODO: Move this code
   gCanvas = document.querySelector('#canvas');
   gCtx = gCanvas.getContext('2d');
-  onDrawText('First Choose A Meme');
 }
 
 function renderGallery() {
@@ -44,7 +43,7 @@ function addListeners() {
   // Editor
   const elMemeText = document.querySelector('.control-txt');
   elMemeText.addEventListener('input', function () {
-    onChangeText(this.value, 0);
+    onChangeText(this.value);
   });
 
   const elIncreaseFontBtn = document.querySelector('.increase-font');
@@ -55,5 +54,15 @@ function addListeners() {
   const elDecreaseFont = document.querySelector('.decrease-font');
   elDecreaseFont.addEventListener('click', () => {
     onChangeFontSize(-1);
+  });
+
+  const elFillColorInput = document.querySelector('input[name=fillColor]');
+  elFillColorInput.addEventListener('input', function () {
+    onChangeFillColor(this.value);
+  });
+
+  const elOutlineColorInput = document.querySelector('input[name=outlineColor]');
+  elOutlineColorInput.addEventListener('input', function () {
+    onChangeOutlineColor(this.value);
   });
 }

@@ -15,3 +15,10 @@
 .control-btn img {
   width: 50%;
 }
+
+input[type='color'] {
+  opacity: 0;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
