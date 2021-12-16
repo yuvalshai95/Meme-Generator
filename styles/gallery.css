@@ -59,6 +59,15 @@ body {
   margin-left: 50px;
 }
 
+.main-header .main-nav .logo:hover {
+  cursor: pointer;
+}
+
+.main-header .main-nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
 .main-header .main-nav ul {
   margin-right: 60px;
   gap: 30px;
@@ -146,10 +155,6 @@ body {
   box-shadow: 0 0 0 5px #ff7f00;
 }
 
-/* Canvas */
-#canvas {
-  border: 5px solid black;
-}
 /* About */
 .about-container {
   padding: 30px;

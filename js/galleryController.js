@@ -1,15 +1,15 @@
 'use strict';
 
+//TODO: Move this code
+gCanvas = document.querySelector('#canvas');
+gCtx = gCanvas.getContext('2d');
+
 addBodyListener();
 
 function onInit() {
   renderGallery();
   addGalleryListeners();
   addEditorListeners();
-
-  //TODO: Move this code
-  gCanvas = document.querySelector('#canvas');
-  gCtx = gCanvas.getContext('2d');
 }
 
 function renderGallery() {
@@ -23,11 +23,34 @@ function renderGallery() {
 
 function onImgSelect(imgId) {
   setMemeImgId(imgId);
+  onChangeTab('editor');
   renderMeme();
+}
+
+function onChangeTab(toTab) {
+  const elSearchSection = document.querySelector('.search-container');
+  const elGallery = document.querySelector('.meme-gallery-container');
+  const elEditor = document.querySelector('.canvas-container');
+  const elAbout = document.querySelector('.about-container');
+
+  elSearchSection.style.display = 'none';
+  elEditor.style.display = 'none';
+  elGallery.style.display = 'none';
+  elAbout.style.display = 'none';
+
+  if (toTab === 'editor') {
+    elEditor.style.display = 'flex';
+    document.querySelector('.nav-gallery').classList.remove('active');
+  } else if (toTab === 'gallery') {
+    elSearchSection.style.display = 'flex';
+    elGallery.style.display = 'grid';
+    elAbout.style.display = 'flex';
+  }
 }
 
 function addBodyListener() {
   window.addEventListener('load', onInit);
+  document.querySelector('.canvas-container').style.display = 'none';
 }
 
 // Listeners
@@ -40,4 +63,16 @@ function addGalleryListeners() {
       onImgSelect(imgId);
     });
   }
+
+  const elNavLogo = document.querySelector('.main-nav .logo');
+  elNavLogo.addEventListener('click', () => {
+    onChangeTab('gallery');
+    document.querySelector('.nav-gallery').classList.add('active');
+  });
+
+  const elNavGallery = document.querySelector('.nav-gallery');
+  elNavGallery.addEventListener('click', () => {
+    onChangeTab('gallery');
+    document.querySelector('.nav-gallery').classList.add('active');
+  });
 }

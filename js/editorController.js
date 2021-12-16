@@ -1,7 +1,11 @@
 'use strict';
 
+// Canvas
 let gCanvas;
 let gCtx;
+
+let gStartPos;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 
 function renderMeme() {
   //   const meme = getMeme();
@@ -41,9 +45,8 @@ function onChangeText(txt) {
 
 function drawText(line) {
   let { txt, fontSize, align, color, outline, position, font } = line;
-  if (!color) color = '#fff';
-  if (!outline) outline = '#000';
-  console.log('font', font);
+  //   if (!color) color = '#fff';
+  //   if (!outline) outline = '#000';
 
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = `${outline}`;
@@ -97,6 +100,33 @@ function onAddTextLine() {
 function onDeleteText() {
   deleteLine();
   renderMeme();
+}
+
+function onDown(ev) {
+  const clickedPos = getEvPos(ev);
+  console.log('pos', clickedPos);
+
+  if (!isLineClicked(clickedPos)) return;
+  gStartPos = clickedPos;
+  document.body.style.cursor = 'grabbing';
+}
+
+function onMove(ev) {
+  const line = getDragLine();
+  if (!line) return;
+  if (line.isDrag) {
+    const pos = getEvPos(ev);
+    const dx = pos.x - gStartPos.x;
+    const dy = pos.y - gStartPos.y;
+    moveLine(dx, dy);
+    gStartPos = pos;
+    renderMeme();
+  }
+}
+
+function onUp() {
+  setLineDrag();
+  document.body.style.cursor = 'auto';
 }
 
 // Listeners
@@ -168,4 +198,14 @@ function addEditorListeners() {
   elDeleteText.addEventListener('click', () => {
     onDeleteText();
   });
+
+  // Mouse
+  gCanvas.addEventListener('mousedown', onDown);
+  gCanvas.addEventListener('mousemove', onMove);
+  gCanvas.addEventListener('mouseup', onUp);
+
+  // Touch
+  gCanvas.addEventListener('touchstart', onDown);
+  gCanvas.addEventListener('touchmove', onMove);
+  gCanvas.addEventListener('touchend', onUp);
 }

@@ -10,17 +10,17 @@
 </head>
 <body>
     <header class="main-header main-layout">
-        <nav class="main-nav flex  space-between align-center">
+        <nav class="main-nav flex space-between align-center">
             <img src="./img/LOGO.png" alt="" class="logo">
             <ul class="clean-list flex align-center" >
-                <li class="active">Gallery</li>
+                <li class="active nav-gallery">Gallery</li>
                 <span>|</span>
-                <li>About</li>
+                <li class="nav-about"><a href="#about">About</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="search-container main-layout flex space-between" style="display: none;">
+    <section class="search-container main-layout flex space-between" >
         <input type="text" name="search-txt" placeholder="Search for memes">
         <ul class="most-common clean-list flex ">
             <li>all</li>
@@ -31,20 +31,20 @@
         </ul>
     </section>
 
-    <section class="meme-gallery-container main-layout" style="display: none;"></section>
+    <section class="meme-gallery-container main-layout" ></section>
   
 
-        <section class="canvas-container">
+        <section class="canvas-container main-layout flex align-center justify-center">
             <canvas id="canvas" height="500px" width="500px"></canvas>
             <div class="meme-control">
                 <input type="text" class="control-txt" placeholder="Meme text here">
                 <button class="control-btn increase-font"><img src="./img/ICONS/increase font - icon.png" alt=""></button>
                 <button class="control-btn decrease-font"><img src="./img/ICONS/decrease font - icon.png" alt=""></button>
-                <button class="control-btn">
+                <button class="control-btn fill-color">
                     <input type="color" class="control-color-input" name="fillColor">
                     <img src="./img/ICONS/paint-board-and-brush.png" alt="">
                 </button>
-                <button class="control-btn">
+                <button class="control-btn font-stroke">
                     <input type="color" class="control-color-input" name="outlineColor">
                     <img src="./img/ICONS/text stroke.png" alt="">
                 </button>
@@ -65,7 +65,7 @@
             
         </section>
 
-        <section class="about-container main-layout flex align-center" style="display: none;">
+        <section id="about" class="about-container main-layout flex align-center" >
             <img src="./img/yuval.jpg" alt="">
             <div class="about-content">'
                 <h3>Yuval Shai</h3>

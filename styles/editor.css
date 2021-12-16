@@ -1,6 +1,101 @@
+.canvas-container {
+  background-color: #e3e3e3;
+  gap: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  min-height: 75vh;
+}
+
 /* Meme Canvas */
+#canvas {
+  border: 2px solid black;
+  margin-left: 40px;
+}
 
 /* Meme Control */
+.meme-control {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  grid-template-rows: repeat(7, 60px);
+  grid-gap: 10px 20px;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.up-text {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.down-text {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.switch-lines {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
+.add-text {
+  grid-column: 4/5;
+  grid-row: 2/3;
+}
+
+.delete-text {
+  grid-column: 5/6;
+  grid-row: 2/3;
+}
+
+.increase-font {
+  grid-column: 1 /2;
+  grid-row: 4/5;
+}
+
+.decrease-font {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+
+.align-text-left {
+  grid-column: 3/4;
+  grid-row: 4/5;
+}
+.align-text-center {
+  grid-column: 4/5;
+  grid-row: 4/5;
+}
+.align-text-right {
+  grid-column: 5/6;
+  grid-row: 4/5;
+}
+
+.control-txt {
+  grid-column: 1 / 6;
+  grid-row: 1 / 2;
+  border: 0px solid white;
+  border-radius: 0.8em;
+  font-family: montserrat;
+  font-size: 1.4rem;
+}
+
+.control-select {
+  grid-column: 1/4;
+  grid-row: 5/6;
+  font-family: montserrat;
+  font-size: 1.4rem;
+  border: 0px solid white;
+  border-radius: 0.8em;
+}
+
+.fill-color {
+  grid-column: 4/5;
+  grid-row: 5/6;
+}
+
+.font-stroke {
+  grid-column: 5/6;
+  grid-row: 5/6;
+}
 
 .control-btn {
   width: 60px;

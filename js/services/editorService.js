@@ -32,6 +32,10 @@ function _initMeme() {
   };
 }
 
+function getDragLine() {
+  return gMeme.lines[gMeme.selectedLineIdx];
+}
+
 function getMeme() {
   return gMeme;
 }
@@ -117,4 +121,49 @@ function deleteLine() {
   gMeme.lines.splice(gMeme.selectedLineIdx, 1);
   gMeme.selectedLineIdx--;
   if (gMeme.selectedLineIdx < 0) gMeme.selectedLineIdx = 0;
+}
+
+function getEvPos(ev) {
+  const pos = {
+    x: ev.offsetX,
+    y: ev.offsetY,
+  };
+  if (gTouchEvs.includes(ev.type)) {
+    ev.preventDefault();
+    ev = ev.changedTouches[0];
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    };
+  }
+  return pos;
+}
+
+function moveLine(dx, dy) {
+  gMeme.lines[gMeme.selectedLineIdx].position.x += dx;
+  gMeme.lines[gMeme.selectedLineIdx].position.y += dy;
+}
+
+function setLineDrag() {
+  if (!gMeme.isDrag) return;
+  gMeme.lines[gMeme.selectedLineIdx].isDrag = false;
+  gMeme.isDrag = false;
+}
+
+function isLineClicked(clickedPos) {
+  const lineIdx = gMeme.lines.findIndex(function (line) {
+    console.log('fontSize', line.fontSize);
+    console.log('txt.length', line.txt.length);
+    return (
+      clickedPos.x > line.position.x &&
+      clickedPos.x < line.position.x + (line.fontSize / 2) * line.txt.length &&
+      clickedPos.y < line.position.y &&
+      clickedPos.y > line.position.y - line.fontSize
+    );
+  });
+  if (lineIdx === -1) return false;
+  gMeme.selectedLineIdx = lineIdx;
+  gMeme.lines[lineIdx].isDrag = true;
+  gMeme.isDrag = true;
+  return true;
 }
