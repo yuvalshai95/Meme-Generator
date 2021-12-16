@@ -20,7 +20,7 @@
         </nav>
     </header>
 
-    <section class="search-container main-layout flex space-between">
+    <section class="search-container main-layout flex space-between" style="display: none;">
         <input type="text" name="search-txt" placeholder="Search for memes">
         <ul class="most-common clean-list flex ">
             <li>all</li>
@@ -31,10 +31,10 @@
         </ul>
     </section>
 
-    <section class="meme-gallery-container main-layout"></section>
+    <section class="meme-gallery-container main-layout" style="display: none;"></section>
   
 
-        <section class="canvas-container" style="display: none;">
+        <section class="canvas-container">
             <canvas id="canvas" height="500px" width="500px"></canvas>
             <div class="meme-control">
                 <input type="text" class="control-txt" placeholder="Meme text here">
@@ -49,15 +49,27 @@
                     <img src="./img/ICONS/text stroke.png" alt="">
                 </button>
                 <button class="control-btn switch-lines"><img src="./img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                <button class="control-btn up-text"><img src="./img/ICONS/up-arrow.png" alt=""></button>
+                <button class="control-btn down-text"><img src="./img/ICONS/down-arrow.png" alt=""></button>
+                <button class="control-btn add-text"><img src="./img/ICONS/add.png" alt=""></button>
+                <button class="control-btn delete-text"><img src="./img/ICONS/trash.png" alt=""></button>
+                <button class="control-btn align-text-left"><img src="./img/ICONS/align-to-left.png" alt=""></button>
+                <button class="control-btn align-text-right"><img src="./img/ICONS/align-to-right.png" alt=""></button>
+                <button class="control-btn align-text-center"><img src="./img/ICONS/center-text-alignment.png" alt=""></button>
+                <select name="canvasFont" class="control-select">
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Lato-Regular">Lato</option>
+                </select>
             </div>
             
         </section>
 
-        <section class="about-container main-layout flex align-center">
+        <section class="about-container main-layout flex align-center" style="display: none;">
             <img src="./img/yuval.jpg" alt="">
             <div class="about-content">'
                 <h3>Yuval Shai</h3>
-                <p>Lorem ipsum dolor sit amet consectetur  officia rerum explicabo. Dolorum.</p>
+                <p>Lets make some memes together!</p>
                 <div class="socials"></div>
             </div>
         </section>
