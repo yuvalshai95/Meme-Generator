@@ -4,14 +4,45 @@
 let gCanvas;
 let gCtx;
 
+// Drag&Drop
 let gStartPos;
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 
 function renderMeme() {
-  //   const meme = getMeme();
-  //   console.log('meme', meme);
   onDrawImg();
   onDrawText();
+}
+
+function renderRecOnText(line) {
+  if (line.align === 'left') {
+    drawRec(
+      line.position.x - 10,
+      line.position.y - line.fontSize,
+      line.txt.length * (0.55 * line.fontSize),
+      1.2 * line.fontSize
+    );
+  } else if (line.align === 'center') {
+    drawRec(
+      line.position.x - 10 - (line.txt.length * 0.5 * line.fontSize) / 2,
+      line.position.y - 1 * line.fontSize,
+      line.txt.length * (0.55 * line.fontSize),
+      1.2 * line.fontSize
+    );
+  } else {
+    drawRec(
+      line.position.x - 10 - line.txt.length * 0.5 * line.fontSize,
+      line.position.y - line.fontSize,
+      line.txt.length * (0.55 * line.fontSize),
+      1.2 * line.fontSize
+    );
+  }
+}
+
+function drawRec(x, y, width, height) {
+  gCtx.beginPath();
+  gCtx.rect(x, y, width + 10, height);
+  gCtx.strokeStyle = '#ffffff';
+  gCtx.stroke();
 }
 
 function onDrawText() {
@@ -41,12 +72,12 @@ function onDrawImg() {
 function onChangeText(txt) {
   setLineTxt(txt);
   renderMeme();
+  const currLine = getDragLine();
+  renderRecOnText(currLine);
 }
 
 function drawText(line) {
   let { txt, fontSize, align, color, outline, position, font } = line;
-  //   if (!color) color = '#fff';
-  //   if (!outline) outline = '#000';
 
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = `${outline}`;
@@ -75,6 +106,8 @@ function onChangeOutlineColor(color) {
 function onSwitchLines() {
   switchLines();
   renderMeme();
+  const currLine = getDragLine();
+  renderRecOnText(currLine);
 }
 
 function onChangeTextPosition(num) {
@@ -95,6 +128,8 @@ function onChangeFont(font) {
 function onAddTextLine() {
   addLine();
   renderMeme();
+  const currLine = getDragLine();
+  renderRecOnText(currLine);
 }
 
 function onDeleteText() {
@@ -104,8 +139,6 @@ function onDeleteText() {
 
 function onDown(ev) {
   const clickedPos = getEvPos(ev);
-  console.log('pos', clickedPos);
-
   if (!isLineClicked(clickedPos)) return;
   gStartPos = clickedPos;
   document.body.style.cursor = 'grabbing';
@@ -121,11 +154,14 @@ function onMove(ev) {
     moveLine(dx, dy);
     gStartPos = pos;
     renderMeme();
+    renderRecOnText(line);
   }
 }
 
 function onUp() {
   setLineDrag();
+  const currLine = getDragLine();
+  renderRecOnText(currLine);
   document.body.style.cursor = 'auto';
 }
 

@@ -68,7 +68,6 @@ function setOutlineColor(color) {
 }
 
 function switchLines() {
-  //   gMeme.selectedLineIdx = gMeme.selectedLineIdx === 0 ? 1 : 0;
   if (!gMeme.lines.length) return;
   // On last line go back to first line
   if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
@@ -152,15 +151,31 @@ function setLineDrag() {
 
 function isLineClicked(clickedPos) {
   const lineIdx = gMeme.lines.findIndex(function (line) {
-    console.log('fontSize', line.fontSize);
-    console.log('txt.length', line.txt.length);
-    return (
-      clickedPos.x > line.position.x &&
-      clickedPos.x < line.position.x + (line.fontSize / 2) * line.txt.length &&
-      clickedPos.y < line.position.y &&
-      clickedPos.y > line.position.y - line.fontSize
-    );
+    if (line.align === 'left') {
+      return (
+        clickedPos.x > line.position.x &&
+        clickedPos.x < line.position.x + (line.fontSize / 2) * line.txt.length &&
+        clickedPos.y < line.position.y &&
+        clickedPos.y > line.position.y - line.fontSize
+      );
+    } else if (line.align === 'center') {
+      const halfWordPx = ((line.fontSize / 2) * line.txt.length) / 2;
+      return (
+        clickedPos.x > line.position.x - halfWordPx &&
+        clickedPos.x < line.position.x + halfWordPx &&
+        clickedPos.y < line.position.y &&
+        clickedPos.y > line.position.y - line.fontSize
+      );
+    } else {
+      return (
+        (clickedPos.x > line.position.x - (line.fontSize / 2) * line.txt.length) &
+          (clickedPos.x < line.position.x) &&
+        clickedPos.y < line.position.y &&
+        clickedPos.y > line.position.y - line.fontSize
+      );
+    }
   });
+
   if (lineIdx === -1) return false;
   gMeme.selectedLineIdx = lineIdx;
   gMeme.lines[lineIdx].isDrag = true;
