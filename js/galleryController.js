@@ -1,8 +1,5 @@
 'use strict';
 
-//TODO: Move this code
-// gCanvas = document.querySelector('#canvas');
-// gCtx = gCanvas.getContext('2d');
 onInitMeme();
 addBodyListener();
 

@@ -8,23 +8,13 @@ function _initMeme() {
     selectedLineIdx: 0,
     lines: [
       {
-        txt: '',
+        txt: 'New Text',
         fontSize: 40,
         font: 'Impact',
         align: 'left',
         color: '#fff',
         outline: '#000',
-        position: { x: 70, y: 100 },
-        isDrag: false,
-      },
-      {
-        txt: '',
-        fontSize: 40,
-        font: 'Impact',
-        align: 'left',
-        color: '#fff',
-        outline: '#000',
-        position: { x: 70, y: 400 },
+        position: { x: 100, y: 100 },
         isDrag: false,
       },
     ],
@@ -86,6 +76,10 @@ function changeTextPosition(num) {
 function changeTextAlign(alignTo) {
   if (!gMeme.lines.length) return;
   gMeme.lines[gMeme.selectedLineIdx].align = alignTo;
+  if (alignTo === 'left') var x = gCanvas.width / 10;
+  if (alignTo === 'center') var x = gCanvas.width / 2;
+  if (alignTo === 'right') var x = gCanvas.width - gCanvas.width / 10;
+  gMeme.lines[gMeme.selectedLineIdx].position.x = x;
 }
 
 function changeFont(font) {
@@ -94,6 +88,13 @@ function changeFont(font) {
 }
 
 function addLine() {
+  const linesCount = gMeme.lines.length;
+  if (linesCount === 1) {
+    var posY = gCanvas.height - 55;
+  } else if (linesCount >= 2) {
+    var posY = 200;
+  }
+
   const line = {
     txt: 'New Text',
     fontSize: '40',
@@ -101,13 +102,10 @@ function addLine() {
     align: 'left',
     color: '#fff',
     outline: '#000',
-    position: { x: 70, y: 250 },
+    position: { x: 70, y: posY },
     isDrag: false,
   };
-
-  // Add new line to lines array
   gMeme.lines.push(line);
-  // Update line idx to current text
   gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
 
