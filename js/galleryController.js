@@ -53,6 +53,10 @@ function addBodyListener() {
   document.querySelector('.canvas-container').style.display = 'none';
 }
 
+function toggleMenu() {
+  document.querySelector('body').classList.toggle('menu-open');
+}
+
 // Listeners
 function addGalleryListeners() {
   // Gallery Images
@@ -74,5 +78,21 @@ function addGalleryListeners() {
   elNavGallery.addEventListener('click', () => {
     onChangeTab('gallery');
     document.querySelector('.nav-gallery').classList.add('active');
+    toggleMenu();
+  });
+
+  const elNavAbout = document.querySelector('.nav-about');
+  elNavAbout.addEventListener('click', () => {
+    toggleMenu();
+  });
+
+  const elMainScreen = document.querySelector('.main-screen');
+  elMainScreen.addEventListener('click', () => {
+    toggleMenu();
+  });
+
+  const elHamburger = document.querySelector('.btn-menu-toggle');
+  elHamburger.addEventListener('click', () => {
+    toggleMenu();
   });
 }
