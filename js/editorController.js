@@ -8,6 +8,12 @@ let gCtx;
 let gStartPos;
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 
+function onInitMeme() {
+  gCanvas = document.querySelector('#canvas');
+  gCtx = gCanvas.getContext('2d');
+  resizeCanvas();
+}
+
 function renderMeme() {
   onDrawImg();
   onDrawText();
@@ -86,6 +92,12 @@ function drawText(line) {
   gCtx.textAlign = align;
   gCtx.fillText(txt, position.x, position.y);
   gCtx.strokeText(txt, position.x, position.y);
+}
+
+function resizeCanvas() {
+  const elCanvasControl = document.querySelector('.canvas-control');
+  gCanvas.width = elCanvasControl.offsetWidth;
+  gCanvas.height = elCanvasControl.offsetHeight;
 }
 
 function onChangeFontSize(size) {

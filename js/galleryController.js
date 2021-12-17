@@ -1,9 +1,9 @@
 'use strict';
 
 //TODO: Move this code
-gCanvas = document.querySelector('#canvas');
-gCtx = gCanvas.getContext('2d');
-
+// gCanvas = document.querySelector('#canvas');
+// gCtx = gCanvas.getContext('2d');
+onInitMeme();
 addBodyListener();
 
 function onInit() {
@@ -41,6 +41,8 @@ function onChangeTab(toTab) {
   if (toTab === 'editor') {
     elEditor.style.display = 'flex';
     document.querySelector('.nav-gallery').classList.remove('active');
+    resizeCanvas();
+    renderMeme();
   } else if (toTab === 'gallery') {
     elSearchSection.style.display = 'flex';
     elGallery.style.display = 'grid';
@@ -50,6 +52,10 @@ function onChangeTab(toTab) {
 
 function addBodyListener() {
   window.addEventListener('load', onInit);
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    renderMeme();
+  });
   document.querySelector('.canvas-container').style.display = 'none';
 }
 

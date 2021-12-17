@@ -1,25 +1,20 @@
+/* Meme Canvas */
+
 .canvas-container {
   background-color: #e3e3e3;
-  gap: 100px;
-  padding-top: 30px;
-  padding-bottom: 30px;
   min-height: 75vh;
 }
 
-/* Meme Canvas */
 #canvas {
   border: 2px solid black;
-  margin-left: 40px;
 }
 
 /* Meme Control */
+
 .meme-control {
   display: grid;
   grid-template-columns: repeat(5, 60px);
   grid-template-rows: repeat(7, 60px);
-  grid-gap: 10px 20px;
-  justify-content: center;
-  padding-top: 15px;
 }
 
 .up-text {
@@ -48,25 +43,25 @@
 
 .increase-font {
   grid-column: 1 /2;
-  grid-row: 4/5;
+  grid-row: 3/4;
 }
 
 .decrease-font {
   grid-column: 2/3;
-  grid-row: 4/5;
+  grid-row: 3/4;
 }
 
 .align-text-left {
   grid-column: 3/4;
-  grid-row: 4/5;
+  grid-row: 3/4;
 }
 .align-text-center {
   grid-column: 4/5;
-  grid-row: 4/5;
+  grid-row: 3/4;
 }
 .align-text-right {
   grid-column: 5/6;
-  grid-row: 4/5;
+  grid-row: 3/4;
 }
 
 .control-txt {
@@ -80,7 +75,7 @@
 
 .control-select {
   grid-column: 1/4;
-  grid-row: 5/6;
+  grid-row: 4/5;
   font-family: montserrat;
   font-size: 1.4rem;
   border: 0px solid white;
@@ -89,12 +84,12 @@
 
 .fill-color {
   grid-column: 4/5;
-  grid-row: 5/6;
+  grid-row: 4/5;
 }
 
 .font-stroke {
   grid-column: 5/6;
-  grid-row: 5/6;
+  grid-row: 4/5;
 }
 
 .control-btn {
@@ -105,6 +100,7 @@
 }
 .control-btn:hover {
   cursor: pointer;
+  border: 2px solid #ff7f00;
 }
 
 .control-btn img {
@@ -116,4 +112,64 @@ input[type='color'] {
   display: block;
   text-align: center;
   cursor: pointer;
+}
+
+/* MOBILE ONLY */
+
+@media (max-width: 700px) {
+  .canvas-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .meme-control {
+    grid-gap: 10px 20px;
+    padding-top: 30px;
+  }
+
+  .canvas-control {
+    width: 310px;
+    height: 310px;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 700px) {
+  .canvas-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .canvas-control {
+    width: 480px;
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .meme-control {
+    margin-top: 30px;
+    gap: 25px;
+  }
+}
+
+/* LARGE - DESKTOP */
+
+@media (min-width: 1250px) {
+  .canvas-container {
+    flex-direction: row;
+    gap: 100px;
+  }
+
+  .canvas-control {
+    width: 550px;
+    height: 550px;
+    margin-top: 0px;
+  }
+
+  .meme-control {
+    margin-top: 140px;
+  }
 }
