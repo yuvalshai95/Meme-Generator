@@ -289,6 +289,11 @@ function addEditorListeners() {
     });
   }
 
+  const elDownloadLink = document.querySelector('.download-btn a');
+  elDownloadLink.addEventListener('click', function () {
+    downloadMeme(this);
+  });
+
   // Mouse
   gCanvas.addEventListener('mousedown', onDown);
   gCanvas.addEventListener('mousemove', onMove);
