@@ -172,6 +172,15 @@ body {
   margin-left: 50px;
 }
 
+.socials {
+  justify-content: space-evenly;
+}
+
+.about-container .socials li a img {
+  width: 32px;
+  height: 32px;
+  margin-left: 0px;
+}
 /* Footer */
 
 .footer-container {
