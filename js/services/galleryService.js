@@ -1,5 +1,7 @@
 'use strict';
 
+let gUserMemes = _loadUserMemes();
+
 const gImgs = [
   {
     id: 1,
@@ -93,6 +95,16 @@ const gImgs = [
   },
 ];
 
+// function addImg(imgUrl, ImgId) {
+//   const newImg = {
+//     id: ImgId,
+//     url: imgUrl,
+//   };
+
+//   gMeme.selectedImgId = newImg.id;
+//   gImgs.push(newImg);
+// }
+
 function getSelectedImage(imgId) {
   const img = gImgs.find(img => img.id === +imgId);
   return img;
@@ -100,4 +112,15 @@ function getSelectedImage(imgId) {
 
 function getImgs() {
   return gImgs;
+}
+
+function _loadUserMemes() {
+  var memes = loadFromStorage('userMemes');
+  if (!memes || !memes.length) memes = [];
+  saveToStorage('userMemes', memes);
+  return memes;
+}
+
+function getSavedMemes() {
+  return gUserMemes;
 }

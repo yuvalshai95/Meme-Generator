@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./styles/editor.css">
 </head>
 <body>
-
     <div class="main-screen"></div>
 
     <header class="main-header main-layout">
@@ -17,6 +16,7 @@
             <img src="./img/LOGO.png" alt="" class="logo">
             <ul class="clean-list flex align-center" >
                 <li class="active nav-gallery">Gallery</li>
+                <li class="nav-saved">Memes</li>
                 <span>|</span>
                 <li class="nav-about"><a href="#about">About</a></li>
             </ul>
@@ -36,9 +36,10 @@
     </section>
 
     <section class="meme-gallery-container main-layout" ></section>
-  
 
-        <section class="canvas-container main-layout flex align-center justify-center">
+    <section class="saved-meme-container main-layout"></section>
+
+    <section class="canvas-container main-layout flex align-center justify-center">
             <div class="canvas-control">
                 <canvas id="canvas" height="500px" width="500px"></canvas>
             </div>
@@ -62,35 +63,51 @@
                 <button class="control-btn align-text-left"><img src="./img/ICONS/align-to-left.png" alt=""></button>
                 <button class="control-btn align-text-right"><img src="./img/ICONS/align-to-right.png" alt=""></button>
                 <button class="control-btn align-text-center"><img src="./img/ICONS/center-text-alignment.png" alt=""></button>
+                <div class="stickers-container">
+                    <div class="sticker">👑</div>
+                    <div class="sticker">👓</div>
+                    <div class="sticker">🎯</div>
+                    <div class="sticker">💰</div>
+                </div>
                 <select name="canvasFont" class="control-select">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
                     <option value="Lato-Regular">Lato</option>
                 </select>
+                <button class="control-btn save-btn">Save Meme</button>
+                <!-- <button class="control-btn download-btn"><a href="#" download="">Download</a></button> -->
             </div>
             
-        </section>
+    </section>
 
-        <section id="about" class="about-container main-layout flex align-center" >
+    <section id="about" class="about-container main-layout flex align-center" >
             <img src="./img/yuval.jpg" alt="">
             <div class="about-content">'
                 <h3>Yuval Shai</h3>
                 <p>Lets make some memes together!</p>
                 <div class="socials"></div>
             </div>
-        </section>
-        <footer class="footer-container main-layout flex justify-center align-center">
+    </section>
+
+    <footer class="footer-container main-layout flex justify-center align-center">
             <img src="./img/LOGO.png" alt="" class="logo">
             <small>&#169; Yuval Shai</small>
-        </footer>
+    </footer>
+
+    <div class="saved-meme-screen-modal">
+            <div class="modal-content">
+                <h3>Your Meme Is Saved !</h3>
+                <h4>&#128512</h4>
+            </div>
+    </div>
 
 
-
-
-
-
+    <script src="./js/services/storageService.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/services/savedMemeService.js"></script>
     <script src="./js/services/editorService.js"></script>
     <script src="./js/services/galleryService.js"></script>
+    <script src="./js/savedMemeController.js"></script>
     <script src="./js/editorController.js"></script>
     <script src="./js/galleryController.js"></script>
 </body>

@@ -12,16 +12,16 @@ function onInit() {
 function renderGallery() {
   const imgs = getImgs();
   let strHTML = '';
-  imgs.forEach(img => {
-    strHTML += `<img src="./${img.url}" data-id=${img.id} alt="">`;
+  imgs.forEach(({ url, id }) => {
+    strHTML += `<img src="./${url}" data-id=${id} alt="">`;
   });
   document.querySelector('.meme-gallery-container').innerHTML = strHTML;
 }
 
 function onImgSelect(imgId) {
   setMemeImgId(imgId);
-  onChangeTab('editor');
   renderMeme();
+  onChangeTab('editor');
 }
 
 function onChangeTab(toTab) {
@@ -29,7 +29,9 @@ function onChangeTab(toTab) {
   const elGallery = document.querySelector('.meme-gallery-container');
   const elEditor = document.querySelector('.canvas-container');
   const elAbout = document.querySelector('.about-container');
+  const elSavedMemes = document.querySelector('.saved-meme-container');
 
+  elSavedMemes.style.display = 'none';
   elSearchSection.style.display = 'none';
   elEditor.style.display = 'none';
   elGallery.style.display = 'none';
@@ -37,6 +39,7 @@ function onChangeTab(toTab) {
 
   if (toTab === 'editor') {
     elEditor.style.display = 'flex';
+    // TODO: change to method that remove active from all
     document.querySelector('.nav-gallery').classList.remove('active');
     resizeCanvas();
     renderMeme();
@@ -44,6 +47,9 @@ function onChangeTab(toTab) {
     elSearchSection.style.display = 'flex';
     elGallery.style.display = 'grid';
     elAbout.style.display = 'flex';
+  } else if (toTab === 'saved') {
+    elSavedMemes.style.display = 'grid';
+    elSearchSection.style.display = 'flex';
   }
 }
 
@@ -64,9 +70,9 @@ function toggleMenu() {
 function addGalleryListeners() {
   // Gallery Images
   const elImgs = document.querySelectorAll('.meme-gallery-container img');
-  for (let img of elImgs) {
-    const imgId = img.dataset.id;
-    img.addEventListener('click', () => {
+  for (let elImg of elImgs) {
+    const imgId = elImg.dataset.id;
+    elImg.addEventListener('click', () => {
       onImgSelect(imgId);
     });
   }
@@ -84,8 +90,16 @@ function addGalleryListeners() {
     toggleMenu();
   });
 
+  const elNavSaved = document.querySelector('.nav-saved');
+  elNavSaved.addEventListener('click', () => {
+    renderSavedMemes();
+    onChangeTab('saved');
+    addSavedMemesListeners();
+  });
+
   const elNavAbout = document.querySelector('.nav-about');
   elNavAbout.addEventListener('click', () => {
+    // TODO: check if in phone mode then toggle menu
     toggleMenu();
   });
 

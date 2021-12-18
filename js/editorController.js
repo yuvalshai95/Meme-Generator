@@ -177,6 +177,21 @@ function onUp() {
   document.body.style.cursor = 'auto';
 }
 
+function onClearTextInput() {
+  const elMemeText = document.querySelector('.control-txt');
+  elMemeText.value = '';
+}
+
+function onSetTextInput(sticker) {
+  const elMemeText = document.querySelector('.control-txt');
+  elMemeText.value = sticker;
+}
+
+function onSaveMeme() {
+  const memeUrl = gCanvas.toDataURL('image/png', 'image/jpeg');
+  saveUserMeme(memeUrl);
+}
+
 // Listeners
 function addEditorListeners() {
   const elMemeText = document.querySelector('.control-txt');
@@ -205,7 +220,10 @@ function addEditorListeners() {
   });
 
   const switchLines = document.querySelector('.switch-lines');
-  switchLines.addEventListener('click', onSwitchLines);
+  switchLines.addEventListener('click', () => {
+    onSwitchLines();
+    onClearTextInput();
+  });
 
   const elUpText = document.querySelector('.up-text');
   elUpText.addEventListener('click', () => {
@@ -240,12 +258,36 @@ function addEditorListeners() {
   const elAddText = document.querySelector('.add-text');
   elAddText.addEventListener('click', () => {
     onAddTextLine();
+    onClearTextInput();
   });
 
   const elDeleteText = document.querySelector('.delete-text');
   elDeleteText.addEventListener('click', () => {
     onDeleteText();
   });
+
+  const elSaveMemeBtn = document.querySelector('.save-btn');
+  elSaveMemeBtn.addEventListener('click', () => {
+    onSaveMeme();
+    const elModal = document.querySelector('.saved-meme-screen-modal');
+    elModal.style.opacity = 1;
+
+    setTimeout(() => {
+      elModal.style.opacity = 0;
+    }, 2000);
+
+    resetMeme();
+
+    onClearTextInput();
+  });
+
+  const elStickers = document.querySelectorAll('.sticker');
+  for (let sticker of elStickers) {
+    sticker.addEventListener('click', () => {
+      addLine(sticker.innerHTML);
+      renderMeme();
+    });
+  }
 
   // Mouse
   gCanvas.addEventListener('mousedown', onDown);

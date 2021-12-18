@@ -18,8 +18,18 @@ function _initMeme() {
         isDrag: false,
       },
     ],
-    isDrag: false,
   };
+}
+
+function resetMeme() {
+  gMeme = _initMeme();
+}
+
+function saveUserMeme(memeUrl) {
+  gMeme.id = getRandomId();
+  gMeme.canvasImg = memeUrl;
+  gUserMemes.push(gMeme);
+  saveToStorage('userMemes', gUserMemes);
 }
 
 function getDragLine() {
@@ -87,8 +97,9 @@ function changeFont(font) {
   gMeme.lines[gMeme.selectedLineIdx].font = font;
 }
 
-function addLine() {
+function addLine(txt) {
   const linesCount = gMeme.lines.length;
+  const lineTxt = !txt ? 'New Text' : txt;
   if (linesCount === 1) {
     var posY = gCanvas.height - 55;
   } else if (linesCount >= 2) {
@@ -96,7 +107,7 @@ function addLine() {
   }
 
   const line = {
-    txt: 'New Text',
+    txt: `${lineTxt}`,
     fontSize: '40',
     font: 'Impact',
     align: 'left',
