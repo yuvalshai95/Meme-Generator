@@ -127,9 +127,12 @@ body {
   color: #040a2c;
   font-size: 1.2rem;
   padding: 15px 0px;
+  font-family: montserrat;
 }
-.search-container .most-common:hover {
+
+.search-container .most-common li:hover {
   cursor: pointer;
+  color: #ff7f00;
 }
 
 /* Gallery */

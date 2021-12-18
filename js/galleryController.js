@@ -9,8 +9,8 @@ function onInit() {
   addEditorListeners();
 }
 
-function renderGallery() {
-  const imgs = getImgs();
+function renderGallery(searchBy) {
+  const imgs = getImgs(searchBy);
   let strHTML = '';
   imgs.forEach(({ url, id }) => {
     strHTML += `<img src="./${url}" data-id=${id} alt="">`;
@@ -112,4 +112,16 @@ function addGalleryListeners() {
   elHamburger.addEventListener('click', () => {
     toggleMenu();
   });
+
+  const elSearchTextInput = document.querySelector('input[name=search-txt]');
+  elSearchTextInput.addEventListener('input', function () {
+    renderGallery(this.value);
+  });
+
+  const elSearchBarLis = document.querySelectorAll('.most-common li');
+  for (let li of elSearchBarLis) {
+    li.addEventListener('click', function () {
+      renderGallery(li.innerText);
+    });
+  }
 }

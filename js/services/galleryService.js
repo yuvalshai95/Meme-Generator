@@ -6,27 +6,40 @@ const gImgs = [
   {
     id: 1,
     url: 'img/memes/1.jpg',
-    keywords: [],
+    keywords: ['trump', 'angry', 'america', 'usa', 'politics'],
   },
   {
     id: 2,
     url: 'img/memes/2.jpg',
-    keywords: [],
+    keywords: ['dogs', 'cats', 'cute', 'animals', 'puppy', 'puppies', 'funny', 'happy', 'laugh', 'joke'],
   },
   {
     id: 3,
     url: 'img/memes/3.jpg',
-    keywords: [],
+    keywords: ['dogs', 'cats', 'cute', 'animals', 'puppy', 'puppies', 'funny'],
   },
   {
     id: 4,
     url: 'img/memes/4.jpg',
-    keywords: [],
+    keywords: ['dogs', 'cats', 'cute', 'animals', 'puppy', 'puppies', 'funny', 'happy', 'laugh', 'joke'],
   },
   {
     id: 5,
     url: 'img/memes/5.jpg',
-    keywords: [],
+    keywords: [
+      'cute',
+      'baby',
+      'babies',
+      'kids',
+      'yes',
+      'i did it',
+      'sucess',
+      'victory',
+      'respect',
+      'nice',
+      'good work',
+      'great',
+    ],
   },
   {
     id: 6,
@@ -95,23 +108,17 @@ const gImgs = [
   },
 ];
 
-// function addImg(imgUrl, ImgId) {
-//   const newImg = {
-//     id: ImgId,
-//     url: imgUrl,
-//   };
-
-//   gMeme.selectedImgId = newImg.id;
-//   gImgs.push(newImg);
-// }
-
 function getSelectedImage(imgId) {
   const img = gImgs.find(img => img.id === +imgId);
   return img;
 }
 
-function getImgs() {
-  return gImgs;
+function getImgs(searchBy) {
+  if (!searchBy || searchBy === 'all') return gImgs;
+  else {
+    const filteredImgs = gImgs.filter(img => img.keywords.some(word => word.includes(searchBy)));
+    return filteredImgs;
+  }
 }
 
 function _loadUserMemes() {
