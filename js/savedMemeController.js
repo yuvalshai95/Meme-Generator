@@ -36,8 +36,8 @@ function addSavedMemesListeners() {
   const elDeleteBtns = document.querySelectorAll('.delete-saved-meme');
   for (let elDeleteBtn of elDeleteBtns) {
     elDeleteBtn.addEventListener('click', () => {
-      console.log('deleting img ->', +elDeleteBtn.dataset.id);
       onDeleteMemeById(+elDeleteBtn.dataset.id);
+      addSavedMemesListeners();
     });
   }
 }

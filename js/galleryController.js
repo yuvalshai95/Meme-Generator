@@ -120,12 +120,14 @@ function addGalleryListeners() {
   const elSearchTextInput = document.querySelector('input[name=search-txt]');
   elSearchTextInput.addEventListener('input', function () {
     renderGallery(this.value);
+    addGalleryListeners();
   });
 
   const elSearchBarLis = document.querySelectorAll('.most-common li');
   for (let li of elSearchBarLis) {
     li.addEventListener('click', function () {
       renderGallery(li.innerText);
+      addGalleryListeners();
     });
   }
 }

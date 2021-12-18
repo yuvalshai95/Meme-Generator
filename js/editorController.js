@@ -282,6 +282,8 @@ function addEditorListeners() {
     resetMeme();
 
     onClearTextInput();
+
+    addSavedMemesListeners();
   });
 
   const elStickers = document.querySelectorAll('.sticker');
