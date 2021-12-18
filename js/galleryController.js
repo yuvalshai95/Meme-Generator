@@ -41,13 +41,17 @@ function onChangeTab(toTab) {
     elEditor.style.display = 'flex';
     // TODO: change to method that remove active from all
     document.querySelector('.nav-gallery').classList.remove('active');
+    document.querySelector('.nav-saved').classList.remove('active');
     resizeCanvas();
     renderMeme();
   } else if (toTab === 'gallery') {
     elSearchSection.style.display = 'flex';
     elGallery.style.display = 'grid';
     elAbout.style.display = 'flex';
+    document.querySelector('.nav-saved').classList.remove('active');
   } else if (toTab === 'saved') {
+    document.querySelector('.nav-gallery').classList.remove('active');
+    document.querySelector('.nav-saved').classList.add('active');
     elSavedMemes.style.display = 'grid';
     elSearchSection.style.display = 'flex';
   }
