@@ -175,6 +175,9 @@ function onUp() {
   const currLine = getDragLine();
   renderRecOnText(currLine);
   document.body.style.cursor = 'auto';
+
+  //Clear Rect from text
+  renderMeme();
 }
 
 function onClearTextInput() {
