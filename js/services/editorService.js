@@ -114,7 +114,7 @@ function addLine(txt) {
 
   const line = {
     txt: `${lineTxt}`,
-    fontSize: '40',
+    fontSize: 40,
     font: 'Impact',
     align: 'left',
     color: '#fff',

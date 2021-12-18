@@ -287,7 +287,7 @@ function addEditorListeners() {
   const elStickers = document.querySelectorAll('.sticker');
   for (let sticker of elStickers) {
     sticker.addEventListener('click', () => {
-      addLine(sticker.innerHTML);
+      addLine(sticker.innerText);
       renderMeme();
     });
   }
