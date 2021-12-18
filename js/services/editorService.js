@@ -21,6 +21,12 @@ function _initMeme() {
   };
 }
 
+function downloadMeme(elLink) {
+  const data = gCanvas.toDataURL('image/jpg');
+  elLink.href = data;
+  elLink.download = 'my-Meme';
+}
+
 function resetMeme() {
   gMeme = _initMeme();
 }
