@@ -271,18 +271,15 @@ function addEditorListeners() {
 
   const elSaveMemeBtn = document.querySelector('.save-btn');
   elSaveMemeBtn.addEventListener('click', () => {
+    renderMeme();
     onSaveMeme();
     const elModal = document.querySelector('.saved-meme-screen-modal');
     elModal.style.opacity = 1;
-
     setTimeout(() => {
       elModal.style.opacity = 0;
-    }, 2000);
-
+    }, 1000);
     resetMeme();
-
     onClearTextInput();
-
     addSavedMemesListeners();
   });
 
@@ -296,6 +293,7 @@ function addEditorListeners() {
 
   const elDownloadLink = document.querySelector('.download-btn a');
   elDownloadLink.addEventListener('click', function () {
+    renderMeme();
     downloadMeme(this);
   });
 

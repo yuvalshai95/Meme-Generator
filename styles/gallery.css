@@ -69,7 +69,6 @@ body {
 }
 
 .main-header .main-nav ul {
-  /* margin-right: 60px; */
   gap: 30px;
 }
 
@@ -90,7 +89,7 @@ body {
 
 .main-nav ul span {
   font-size: 1.187rem;
-  color: #8a8a8a;
+  color: #fff;
 }
 
 .main-header .main-nav ul > li:hover {
@@ -121,6 +120,11 @@ body {
 
 .search-container input[type='text']:focus {
   outline: none;
+}
+
+.text-search img {
+  width: 25px;
+  border-bottom: 2px solid rgb(214, 211, 211);
 }
 
 .search-container .most-common {
@@ -249,7 +253,7 @@ body {
     right: 0;
     flex-direction: column;
     height: 100vh;
-    min-width: 240px;
+    min-width: 300px;
     background-color: rgba(41, 41, 41, 0.9);
     box-shadow: 0px 0px 0px transparent;
     transform: translateX(100%);
@@ -367,25 +371,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
     cursor: pointer;
 
     transition: box-shadow 0.3s;
-  }
-
-  .main-nav ul span {
-    font-size: 1.187rem;
-    color: #fff;
-  }
-
-  .main-header .main-nav ul > li:hover {
-    box-shadow: inset 0px -6px 0 #040a2c;
-    color: #040a2c;
-  }
-
-  .main-nav ul li.active {
-    box-shadow: inset 0px -6px 0 #040a2c;
-    color: #040a2c;
   }
 
   .btn-menu-toggle {

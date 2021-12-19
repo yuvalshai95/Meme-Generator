@@ -98,12 +98,13 @@ function addGalleryListeners() {
   elNavSaved.addEventListener('click', () => {
     renderSavedMemes();
     onChangeTab('saved');
+    toggleMenu();
     addSavedMemesListeners();
   });
 
   const elNavAbout = document.querySelector('.nav-about');
   elNavAbout.addEventListener('click', () => {
-    // TODO: check if in phone mode then toggle menu
+    // TODO: check if in phone sizes then toggle menu
     toggleMenu();
   });
 

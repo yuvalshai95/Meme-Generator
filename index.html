@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="./styles/gallery.css">
-    <link rel="stylesheet" href="./styles/editor.css">
-    <link rel="stylesheet" href="./styles/saved.css">
-    <link rel="shortcut icon" href="./img/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="styles/editor.css">
+    <link rel="stylesheet" href="styles/saved.css">
+    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
     <div class="main-screen"></div>
 
     <header class="main-header main-layout">
         <nav class="main-nav flex space-between align-center">
-            <img src="./img/LOGO.png" alt="" class="logo">
+            <img src="img/MemeGen.png" alt="" class="logo"/>
             <ul class="clean-list flex align-center" >
                 <li class="active nav-gallery">Gallery</li>
                 <li class="nav-saved">Memes</li>
@@ -27,7 +27,10 @@
     </header>
 
     <section class="search-container main-layout flex space-between" >
-        <input type="text" name="search-txt" placeholder="Search for memes">
+        <div class="text-search flex">
+            <input type="text" name="search-txt" placeholder="Search for memes">
+            <img src="img/ICONS/search-icon.png" alt=""/>
+        </div>
         <ul class="most-common clean-list flex ">
             <li>all</li>
             <li>funny</li>
@@ -39,7 +42,8 @@
 
     <section class="meme-gallery-container main-layout" ></section>
 
-    <section class="saved-meme-container main-layout"></section>
+    <section class="saved-meme-container main-layout">
+    </section>
 
     <section class="canvas-container main-layout flex align-center justify-center">
             <div class="canvas-control">
@@ -47,31 +51,31 @@
             </div>
             <div class="meme-control">
                 <input type="text" class="control-txt" placeholder="Meme text here">
-                <button class="control-btn increase-font"><img src="./img/ICONS/increase font - icon.png" alt=""></button>
-                <button class="control-btn decrease-font"><img src="./img/ICONS/decrease font - icon.png" alt=""></button>
+                <button class="control-btn increase-font"><img src="./img/ICONS/increase font - icon.png" alt=""/></button>
+                <button class="control-btn decrease-font"><img src="./img/ICONS/decrease font - icon.png" alt=""/></button>
                 <button class="control-btn fill-color">
                     <input type="color" class="control-color-input" name="fillColor">
-                    <img src="./img/ICONS/paint-board-and-brush.png" alt="">
+                    <img src="./img/ICONS/paint-board-and-brush.png" alt=""/>
                 </button>
                 <button class="control-btn font-stroke">
                     <input type="color" class="control-color-input" name="outlineColor">
-                    <img src="./img/ICONS/text stroke.png" alt="">
+                    <img src="./img/ICONS/text stroke.png" alt=""/>
                 </button>
-                <button class="control-btn switch-lines"><img src="./img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-                <button class="control-btn up-text"><img src="./img/ICONS/up-arrow.png" alt=""></button>
-                <button class="control-btn down-text"><img src="./img/ICONS/down-arrow.png" alt=""></button>
-                <button class="control-btn add-text"><img src="./img/ICONS/add.png" alt=""></button>
-                <button class="control-btn delete-text"><img src="./img/ICONS/trash.png" alt=""></button>
-                <button class="control-btn align-text-left"><img src="./img/ICONS/align-to-left.png" alt=""></button>
-                <button class="control-btn align-text-right"><img src="./img/ICONS/align-to-right.png" alt=""></button>
-                <button class="control-btn align-text-center"><img src="./img/ICONS/center-text-alignment.png" alt=""></button>
+                <button class="control-btn switch-lines"><img src="./img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""/></button>
+                <button class="control-btn up-text"><img src="./img/ICONS/up-arrow.png" alt=""/></button>
+                <button class="control-btn down-text"><img src="./img/ICONS/down-arrow.png" alt=""/></button>
+                <button class="control-btn add-text"><img src="./img/ICONS/add.png" alt=""/></button>
+                <button class="control-btn delete-text"><img src="./img/ICONS/trash.png" alt=""/></button>
+                <button class="control-btn align-text-left"><img src="./img/ICONS/align-to-left.png" alt=""/></button>
+                <button class="control-btn align-text-right"><img src="./img/ICONS/align-to-right.png" alt=""/></button>
+                <button class="control-btn align-text-center"><img src="./img/ICONS/center-text-alignment.png" alt=""/></button>
                 <div class="stickers-container">
                     <div class="sticker">👑</div>
                     <div class="sticker">👓</div>
                     <div class="sticker">🎯</div>
                     <div class="sticker">💰</div>
                 </div>
-                <select name="canvasFont" class="control-select">
+                <select name="canvas-font" class="control-select">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
                     <option value="Lato-Regular">Lato</option>
@@ -83,19 +87,19 @@
     </section>
 
     <section id="about" class="about-container main-layout flex align-center" >
-            <img src="./img/yuval.jpg" alt="">
+            <img src="img/yuval.jpg" alt=""/>
             <div class="about-content">
                 <h3>Yuval Shai</h3>
                 <p>Lets make some memes together!</p>
                 <ul class="socials clean-list flex">
-                    <li><a target="_blank" href="https://github.com/yuvalshai95"><img src="./img/GitHub-32.png" alt=""></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/in/yuval-shai/"><img src="./img/linkedin-32.png" alt=""></a></li>
+                    <li><a target="_blank" href="https://github.com/yuvalshai95"><img src="img/GitHub-32.png" alt=""/></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/yuval-shai/"><img src="img/linkedin-32.png" alt=""/></a></li>
                 </ul>
             </div>
     </section>
 
-    <footer class="footer-container main-layout flex justify-center align-center">
-            <img src="./img/LOGO.png" alt="" class="logo">
+    <footer class="footer-container flex justify-center align-center">
+            <img src="img/MemeGen.png" alt="" class="logo"/>
             <small>&#169; Yuval Shai</small>
     </footer>
 

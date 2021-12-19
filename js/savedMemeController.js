@@ -2,22 +2,32 @@
 
 function renderSavedMemes() {
   const savedMemes = getSavedMemes();
-  let strHTML = '';
-  savedMemes.forEach(({ canvasImg, id }) => {
-    strHTML += `<div class="saved-meme">
-                  <img src="${canvasImg}" data-id=${id} alt="meme">
-                  <a class="delete-saved-meme" data-id=${id}>Delete</a>
-                </div>`;
-  });
+  if (!savedMemes.length) {
+    const elSavedMemes = document.querySelector('.saved-meme-container');
+    elSavedMemes.innerHTML = '';
+    const elNoMemesTitle = document.createElement('h2');
+    elNoMemesTitle.innerText = "You don't have any saved memes";
+    elSavedMemes.append(elNoMemesTitle);
+  } else {
+    let strHTML = '';
+    savedMemes.forEach(({ canvasImg, id }) => {
+      strHTML += `<div class="saved-meme">
+                    <img src="${canvasImg}" data-id=${id} alt="meme">
+                    <a class="delete-saved-meme" data-id=${id}>Delete</a>
+                  </div>`;
+    });
 
-  document.querySelector('.saved-meme-container').innerHTML = strHTML;
+    document.querySelector('.saved-meme-container').innerHTML = strHTML;
+  }
 }
 
 function onEditMemeById(id) {
   const meme = getMemeById(id);
   gMeme = meme;
   renderMeme();
-  onChangeTab('editor');
+  setTimeout(() => {
+    onChangeTab('editor');
+  }, 250);
 }
 
 function onDeleteMemeById(id) {

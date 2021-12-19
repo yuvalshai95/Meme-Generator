@@ -3,6 +3,15 @@
   background-color: #e3e3e3;
 }
 
+.saved-meme-container h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / span 3;
+  font-family: montserrat;
+  color: #3e3e3e;
+}
+
 .saved-meme {
   display: flex;
   flex-direction: column;
@@ -40,9 +49,11 @@
 @media (max-width: 700px) {
   .saved-meme-container {
     grid-template-columns: 160px 160px;
+    grid-template-rows: repeat(auto-fill, minmax(200px, 230px));
     grid-gap: 30px;
     justify-content: center;
     padding: 20px 0px;
+    min-height: 50vh;
   }
 }
 
@@ -50,9 +61,11 @@
 @media (min-width: 700px) {
   .saved-meme-container {
     grid-template-columns: repeat(auto-fill, minmax(160px, 200px));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 250px));
     grid-gap: 10px;
     justify-content: center;
     padding: 20px 0px;
+    min-height: 70vh;
   }
 }
 
@@ -61,6 +74,7 @@
 @media (min-width: 900px) {
   .saved-meme-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 280px));
   }
 }
 
@@ -69,6 +83,7 @@
 @media (min-width: 1250px) {
   .saved-meme-container {
     grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 400px));
     gap: 30px;
   }
 }
