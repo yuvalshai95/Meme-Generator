@@ -21,7 +21,9 @@ function renderGallery(searchBy) {
 function onImgSelect(imgId) {
   setMemeImgId(imgId);
   renderMeme();
-  onChangeTab('editor');
+  setTimeout(() => {
+    onChangeTab('editor');
+  }, 250);
 }
 
 function onChangeTab(toTab) {
